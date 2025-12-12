@@ -148,6 +148,7 @@ A professional Angular 18 application for tracking and analyzing personal carbon
   - Total: 2 hours 55 minutes
 - **Verification & Testing**: 1 hour
 - **CO₂ Column Alignment Fix**: 30 minutes
-- **Project Cleanup & README Update**: 45 minutes
+- **Logo Integration & Asset Management**: 45 minutes
+- **Project Cleanup, Documentation & Repository Setup**: 1 hour 20 minutes
 
-**Total Time: ~9 hours**
+**Total Time: 10 hours**
