@@ -1,0 +1,83 @@
+// Shared header mixin and styles
+@mixin app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  background: linear-gradient(135deg, var(--color-green-700) 0%, var(--color-green-600) 100%);
+  border-bottom: 1px solid var(--color-green-200);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+}
+
+@mixin app-brand {
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--color-green-50);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  .logo {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+    filter: brightness(1.1);
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@mixin nav-links {
+  display: flex;
+  gap: 0.5rem;
+
+  a {
+    text-decoration: none;
+    color: var(--color-green-100);
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-green-50);
+    }
+
+    &.active {
+      color: var(--color-green-50);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+}
+
+@mixin page-container {
+  padding: var(--space-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 60px);
+}
+
+@mixin page-header {
+  margin-bottom: var(--space-2xl);
+
+  h1 {
+    margin: 0 0 var(--space-sm) 0;
+    font-size: 2rem;
+    color: var(--color-text-primary);
+  }
+
+  .muted {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+  }
+}

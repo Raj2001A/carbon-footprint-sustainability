@@ -1,0 +1,27 @@
+<header class="app-header">
+  <div class="brand">
+    <img src="logo.png" alt="Carbon Footprint Tracker Logo" class="logo">
+    <span>Carbon Footprint Tracker</span>
+  </div>
+  <nav class="nav-links">
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/add" routerLinkActive="active">Add Emission</a>
+    <a routerLink="/emissions" routerLinkActive="active">Emissions</a>
+    <a routerLink="/chart" routerLinkActive="active">Chart</a>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="page-header">
+    <h1>📈 Monthly Emission Trends</h1>
+    <p class="muted">Track your carbon footprint over time with interactive visualization.</p>
+  </section>
+
+  <section class="chart-container trend-chart">
+    <div class="chart-header">
+      <h2>Monthly Emission Analysis</h2>
+      <p>Total and category breakdown by month with smooth animations</p>
+    </div>
+    <canvas #trendChartCanvas></canvas>
+  </section>
+</main>

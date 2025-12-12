@@ -1,0 +1,125 @@
+// Dashboard Component Styles
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.kpi-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: 0 2px 8px rgba(15, 81, 66, 0.08);
+  border: 2px solid var(--color-border);
+  transition: all var(--transition-base);
+
+  &:hover {
+    border-color: var(--color-green-400);
+    box-shadow: 0 12px 32px rgba(15, 81, 66, 0.16);
+    transform: translateY(-6px);
+  }
+
+  h2 {
+    margin: 0 0 var(--space-md) 0;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--color-green-700);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .kpi-value {
+    margin: 0 0 var(--space-sm) 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-green-800), var(--color-green-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .kpi-label {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+}
+
+.trend-card .kpi-value.up {
+  color: var(--color-error);
+}
+
+.trend-card .kpi-value.down {
+  color: var(--color-success);
+}
+
+.trend-card .kpi-value.flat {
+  color: var(--color-text-secondary);
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  animation: shimmer 2s infinite;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+  }
+}
+
+.hint {
+  margin-top: var(--space-2xl);
+  padding: var(--space-xl);
+  text-align: center;
+  background: var(--color-green-50);
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--color-green-300);
+
+  p {
+    margin: 0 0 var(--space-md) 0;
+    color: var(--color-text-secondary);
+  }
+
+  a {
+    color: var(--color-green-600);
+    font-weight: 600;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-green-700);
+    }
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: var(--space-lg);
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}

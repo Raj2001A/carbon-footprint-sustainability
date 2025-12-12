@@ -1,0 +1,139 @@
+<header class="app-header">
+  <div class="brand">
+    <img src="logo.png" alt="Carbon Footprint Tracker Logo" class="logo">
+    <span>Carbon Footprint Tracker</span>
+  </div>
+  <nav class="nav-links">
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/add" routerLinkActive="active">Add Emission</a>
+    <a routerLink="/emissions" routerLinkActive="active">Emissions</a>
+    <a routerLink="/chart" routerLinkActive="active">Chart</a>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="page-header">
+    <h1>Emissions</h1>
+    <p class="muted">Review and manage your recorded emissions.</p>
+  </section>
+
+  <section class="controls">
+    <div class="control">
+      <label for="categoryFilter">Category</label>
+      <select
+        id="categoryFilter"
+        [(ngModel)]="selectedCategory"
+        (ngModelChange)="onCategoryChange()"
+      >
+        <option *ngFor="let c of categories" [ngValue]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <div class="control">
+      <label for="search">Search activity</label>
+      <input
+        id="search"
+        type="text"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange()"
+        placeholder="e.g. commute"
+      />
+    </div>
+  </section>
+
+  <section class="table-wrapper" *ngIf="(filteredAndSorted | async) as rows">
+    <table *ngIf="rows.length > 0; else emptyState">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Activity</th>
+          <th>Amount</th>
+          <th (click)="setSort('date')" class="sortable">
+            Date
+            <span class="sort-indicator" *ngIf="sortField === 'date'">
+              {{ sortDirection === 'asc' ? '▲' : '▼' }}
+            </span>
+          </th>
+          <th (click)="setSort('amount')" class="sortable">
+            CO2 (kg)
+            <span class="sort-indicator" *ngIf="sortField === 'amount'">
+              {{ sortDirection === 'asc' ? '▲' : '▼' }}
+            </span>
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows">
+          <td>{{ row.category }}</td>
+          <td>{{ row.activity }}</td>
+          <td>{{ row.amount }} {{ row.unit }}</td>
+          <td>{{ row.date | date: 'mediumDate' }}</td>
+          <td>{{ row.co2Kg | number: '1.0-3' }}</td>
+          <td class="actions">
+            <button type="button" class="link edit-btn" (click)="startEdit(row)">Edit</button>
+            <button type="button" class="link delete-btn" (click)="delete(row)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <ng-template #emptyState>
+    <div class="empty">
+      <p>No records available. Try adding an emission first.</p>
+    </div>
+  </ng-template>
+</main>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" *ngIf="editingId" (click)="cancelEdit()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <h2>Edit Emission</h2>
+    <form (submit)="saveEdit()">
+      <div class="form-group">
+        <label for="editCategory">Category</label>
+        <select id="editCategory" [(ngModel)]="editForm.category" name="category" required>
+          <option value="Transport">Transport</option>
+          <option value="Energy">Energy</option>
+          <option value="Food">Food</option>
+          <option value="Waste">Waste</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="editActivity">Activity</label>
+        <input id="editActivity" type="text" [(ngModel)]="editForm.activity" name="activity" required />
+      </div>
+
+      <div class="form-group">
+        <label for="editAmount">Amount</label>
+        <input id="editAmount" type="number" [(ngModel)]="editForm.amount" name="amount" step="0.1" required />
+      </div>
+
+      <div class="form-group">
+        <label for="editUnit">Unit</label>
+        <select id="editUnit" [(ngModel)]="editForm.unit" name="unit" required>
+          <option value="km">km</option>
+          <option value="kWh">kWh</option>
+          <option value="kg">kg</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="editDate">Date</label>
+        <input id="editDate" type="date" [(ngModel)]="editForm.date" name="date" required />
+      </div>
+
+      <div class="form-group">
+        <label for="editNotes">Notes</label>
+        <textarea id="editNotes" [(ngModel)]="editForm.notes" name="notes" rows="3"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancel</button>
+        <button type="submit" class="btn-primary">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>

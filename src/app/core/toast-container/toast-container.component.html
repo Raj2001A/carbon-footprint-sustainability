@@ -1,0 +1,12 @@
+<div class="toast-container">
+  <div *ngFor="let toast of (toasts$ | async)" 
+       class="toast" 
+       [class]="'toast--' + toast.type"
+       [@toast]>
+    <div class="toast__icon">{{ getIcon(toast.type) }}</div>
+    <div class="toast__content">{{ toast.message }}</div>
+    <button class="toast__close" 
+            (click)="removeToast(toast.id)"
+            aria-label="Close notification">×</button>
+  </div>
+</div>

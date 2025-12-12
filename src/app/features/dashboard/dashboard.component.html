@@ -1,0 +1,73 @@
+<header class="app-header">
+  <div class="brand">
+    <img src="logo.png" alt="Carbon Footprint Tracker Logo" class="logo">
+    <span>Carbon Footprint Tracker</span>
+  </div>
+  <nav class="nav-links">
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/add" routerLinkActive="active">Add Emission</a>
+    <a routerLink="/emissions" routerLinkActive="active">Emissions</a>
+    <a routerLink="/chart" routerLinkActive="active">Chart</a>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="page-header">
+    <h1>Dashboard</h1>
+    <p class="muted">Overview of your tracked carbon emissions</p>
+  </section>
+
+  <section *ngIf="(total$ | async) as total; else loadingSkeleton" class="kpi-grid">
+    <article class="kpi-card">
+      <h2>Total Emissions</h2>
+      <p class="kpi-value">{{ total | number:'1.0-2' }} kg CO<sub>2</sub></p>
+      <p class="kpi-label">All time</p>
+    </article>
+
+    <article class="kpi-card" *ngIf="(monthlyAverage$ | async) as monthly">
+      <h2>Monthly Average</h2>
+      <p class="kpi-value">{{ monthly | number:'1.0-2' }} kg CO<sub>2</sub></p>
+      <p class="kpi-label">Average per active month</p>
+    </article>
+
+    <article class="kpi-card" *ngIf="(highestSource$ | async) as highest; else noHighest">
+      <h2>Highest Source</h2>
+      <p class="kpi-value">{{ highest.co2Kg | number:'1.0-2' }} kg</p>
+      <p class="kpi-label">{{ highest.category }}  {{ highest.activity }}</p>
+    </article>
+    <ng-template #noHighest>
+      <article class="kpi-card">
+        <h2>Highest Source</h2>
+        <p class="kpi-value">-</p>
+        <p class="kpi-label">Add an emission to see details</p>
+      </article>
+    </ng-template>
+
+    <article class="kpi-card trend-card" *ngIf="(trend$ | async) as trend">
+      <h2>Trend</h2>
+      <p class="kpi-value" [ngClass]="trend">
+        <span *ngIf="trend === 'up'"> Increasing</span>
+        <span *ngIf="trend === 'down'"> Decreasing</span>
+        <span *ngIf="trend === 'flat'"> Flat</span>
+        <span *ngIf="trend === 'none'">No data</span>
+      </p>
+      <p class="kpi-label">Based on last two entries</p>
+    </article>
+  </section>
+
+  <ng-template #loadingSkeleton>
+    <section class="kpi-grid">
+      <article class="kpi-card skeleton"></article>
+      <article class="kpi-card skeleton"></article>
+      <article class="kpi-card skeleton"></article>
+      <article class="kpi-card skeleton"></article>
+    </section>
+  </ng-template>
+
+  <section class="hint">
+    <p>
+      Start by <a routerLink="/add">adding an emission entry</a>. The dashboard, table, and chart
+      will update automatically.
+    </p>
+  </section>
+</main>
