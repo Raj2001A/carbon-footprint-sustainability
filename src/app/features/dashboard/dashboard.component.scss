@@ -123,6 +123,163 @@
   }
 }
 
+// Chart Section Styles
+.chart-section {
+  margin-bottom: var(--space-2xl);
+
+  .chart-container {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: 0 2px 8px rgba(15, 81, 66, 0.08);
+    border: 2px solid var(--color-border);
+    transition: all var(--transition-base);
+
+    &:hover {
+      border-color: var(--color-green-400);
+      box-shadow: 0 12px 32px rgba(15, 81, 66, 0.16);
+    }
+
+    h2 {
+      margin: 0 0 var(--space-lg) 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-green-800);
+    }
+
+    canvas {
+      max-height: 280px;
+    }
+  }
+}
+
+// Top Emissions Section Styles
+.top-emissions-section {
+  margin-bottom: var(--space-2xl);
+
+  h2 {
+    margin: 0 0 var(--space-lg) 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-green-800);
+  }
+
+  .emissions-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .emission-item {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    border: 2px solid var(--color-border);
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+
+    &:hover {
+      border-color: var(--color-green-400);
+      box-shadow: 0 8px 24px rgba(15, 81, 66, 0.12);
+      transform: translateX(4px);
+    }
+
+    .emission-rank {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-green-600), var(--color-green-500));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .emission-details {
+      flex: 1;
+      min-width: 0;
+
+      .emission-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        margin-bottom: var(--space-sm);
+        flex-wrap: wrap;
+
+        .emission-category {
+          display: inline-block;
+          padding: 0.25rem 0.75rem;
+          border-radius: var(--radius-md);
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+
+          &.transport {
+            background: rgba(59, 130, 246, 0.15);
+            color: #1e40af;
+          }
+
+          &.energy {
+            background: rgba(251, 146, 60, 0.15);
+            color: #92400e;
+          }
+
+          &.food {
+            background: rgba(34, 197, 94, 0.15);
+            color: #15803d;
+          }
+
+          &.waste {
+            background: rgba(168, 85, 247, 0.15);
+            color: #6b21a8;
+          }
+        }
+
+        .emission-value {
+          font-weight: 700;
+          color: var(--color-green-700);
+          font-size: 1.1rem;
+        }
+      }
+
+      .emission-activity {
+        margin: 0 0 var(--space-xs) 0;
+        font-weight: 600;
+        color: var(--color-text-primary);
+        font-size: 0.95rem;
+      }
+
+      .emission-date {
+        margin: 0;
+        font-size: 0.85rem;
+        color: var(--color-text-secondary);
+      }
+    }
+
+    .emission-bar {
+      flex-shrink: 0;
+      width: 120px;
+      height: 6px;
+      background: var(--color-border);
+      border-radius: 3px;
+      overflow: hidden;
+
+      .bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--color-green-600), var(--color-green-400));
+        border-radius: 3px;
+        transition: width var(--transition-base);
+      }
+    }
+  }
+}
+
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
@@ -149,6 +306,63 @@
 
     .kpi-label {
       font-size: 0.85rem;
+    }
+  }
+
+  .chart-section {
+    .chart-container {
+      padding: var(--space-lg);
+
+      h2 {
+        font-size: 1.1rem;
+      }
+
+      canvas {
+        max-height: 250px;
+      }
+    }
+  }
+
+  .top-emissions-section {
+    h2 {
+      font-size: 1.1rem;
+    }
+
+    .emission-item {
+      padding: var(--space-md);
+      gap: var(--space-md);
+      flex-wrap: wrap;
+
+      .emission-rank {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+
+      .emission-details {
+        flex-basis: 100%;
+        order: 2;
+
+        .emission-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--space-xs);
+        }
+
+        .emission-activity {
+          font-size: 0.9rem;
+        }
+
+        .emission-date {
+          font-size: 0.8rem;
+        }
+      }
+
+      .emission-bar {
+        flex-basis: 100%;
+        order: 3;
+        width: 100%;
+      }
     }
   }
 

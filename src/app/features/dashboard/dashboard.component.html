@@ -53,6 +53,37 @@
     </section>
   </ng-template>
 
+  <!-- Monthly Chart Section -->
+  <section class="chart-section">
+    <div class="chart-container">
+      <h2>Monthly Emissions Trend</h2>
+      <canvas #monthlyChartCanvas></canvas>
+    </div>
+  </section>
+
+  <!-- Top 5 Emissions Section -->
+  <section class="top-emissions-section" *ngIf="(topEmissions$ | async) as topEmissions">
+    <h2>Top 5 Emissions</h2>
+    <div class="emissions-list">
+      <div *ngFor="let emission of topEmissions; let i = index" class="emission-item">
+        <div class="emission-rank">{{ i + 1 }}</div>
+        <div class="emission-details">
+          <div class="emission-header">
+            <span class="emission-category" [ngClass]="emission.category.toLowerCase()">
+              {{ emission.category }}
+            </span>
+            <span class="emission-value">{{ emission.co2Kg | number:'1.0-2' }} kg CO₂</span>
+          </div>
+          <p class="emission-activity">{{ emission.activity }}</p>
+          <p class="emission-date">{{ emission.date | date:'MMM d, yyyy' }}</p>
+        </div>
+        <div class="emission-bar">
+          <div class="bar-fill" [style.width.%]="(emission.co2Kg / (topEmissions[0].co2Kg || 1)) * 100"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="hint">
     <p>
       Start by <a routerLink="/add">adding an emission entry</a>. The dashboard, table, and chart
