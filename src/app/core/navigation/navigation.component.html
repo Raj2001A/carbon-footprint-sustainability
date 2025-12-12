@@ -1,0 +1,30 @@
+<header class="app-header">
+  <div class="brand">
+    <img src="logo.png" alt="Carbon Footprint Tracker Logo" class="logo">
+    <span class="brand-text">Carbon Footprint Tracker</span>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <nav class="nav-links desktop-nav">
+    <a routerLink="/dashboard" routerLinkActive="active" (click)="closeMenu()">Dashboard</a>
+    <a routerLink="/add" routerLinkActive="active" (click)="closeMenu()">Add Emission</a>
+    <a routerLink="/emissions" routerLinkActive="active" (click)="closeMenu()">Emissions</a>
+    <a routerLink="/chart" routerLinkActive="active" (click)="closeMenu()">Chart</a>
+  </nav>
+
+  <!-- Mobile Hamburger Menu -->
+  <button class="hamburger" [class.active]="isMenuOpen()" (click)="toggleMenu()" aria-label="Toggle navigation menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Mobile Navigation Menu -->
+  <nav class="nav-links mobile-nav" [class.open]="isMenuOpen()">
+    <a routerLink="/dashboard" routerLinkActive="active" (click)="closeMenu()">Dashboard</a>
+    <a routerLink="/add" routerLinkActive="active" (click)="closeMenu()">Add Emission</a>
+    <a routerLink="/emissions" routerLinkActive="active" (click)="closeMenu()">Emissions</a>
+    <a routerLink="/chart" routerLinkActive="active" (click)="closeMenu()">Chart</a>
+  </nav>
+</header>
+

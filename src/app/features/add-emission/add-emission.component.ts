@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractContro
 import { RouterModule } from '@angular/router';
 import { EmissionsStateService, EmissionCategory, EmissionUnit } from '../../core/emissions-state.service';
 import { ToastService } from '../../core/toast.service';
+import { NavigationComponent } from '../../core/navigation/navigation.component';
 
 function positiveAmountValidator(control: AbstractControl): ValidationErrors | null {
   const value = control.value;
@@ -28,7 +29,7 @@ function notInFutureValidator(control: AbstractControl): ValidationErrors | null
 @Component({
   selector: 'app-add-emission',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, NavigationComponent],
   templateUrl: './add-emission.component.html',
   styleUrl: './add-emission.component.scss'
 })

@@ -1,4 +1,4 @@
-﻿# 🌍 Carbon Footprint Tracker
+﻿# Carbon Footprint Tracker
 
 A professional Angular 18 application for tracking and analyzing personal carbon emissions across different categories (Transport, Energy, Food, Waste). Built with modern Angular patterns, responsive design, and comprehensive state management.
 
@@ -6,7 +6,7 @@ A professional Angular 18 application for tracking and analyzing personal carbon
 
 ---
 
-## 📋 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 - Node.js (v18 or higher)
@@ -46,9 +46,9 @@ A professional Angular 18 application for tracking and analyzing personal carbon
 
 ---
 
-## ✨ Implemented Features
+## Implemented Features
 
-### 1. **Dashboard Page** 📊
+### 1. **Dashboard Page** 
 - Display key performance indicators (KPIs):
   - Total emissions (kg CO₂)
   - Monthly average emissions
@@ -57,7 +57,7 @@ A professional Angular 18 application for tracking and analyzing personal carbon
 - Responsive grid layout (4 cards on desktop, 2 on tablet, 1 on mobile)
 - Real-time data updates from state management
 
-### 2. **Add Emission Form** ➕
+### 2. **Add Emission Form**
 - Form with fields for:
   - Category selection (Transport, Energy, Food, Waste)
   - Activity description
@@ -69,7 +69,7 @@ A professional Angular 18 application for tracking and analyzing personal carbon
 - Success toast notification on submission
 - Responsive 2-column layout (desktop) / 1-column (mobile)
 
-### 3. **Emissions Table** 📋
+### 3. **Emissions Table** 
 - Display all recorded emissions in a sortable table
 - Columns: Category, Activity, Amount, Date, CO₂ (kg), Actions
 - Features:
@@ -80,25 +80,25 @@ A professional Angular 18 application for tracking and analyzing personal carbon
   - Delete emissions with confirmation
   - Responsive table with horizontal scroll on mobile
 
-### 4. **Emissions Chart** 📈
+### 4. **Emissions Chart*
 - Monthly trend visualization using Chart.js
 - Line chart showing CO₂ emissions over time
 - Responsive design with proper SSR compatibility
 - Interactive chart with hover tooltips
 
-### 5. **Navigation & Layout** 🧭
+### 5. **Navigation & Layout** 
 - Sticky header with brand logo and navigation links
 - Responsive navigation (hamburger menu on mobile)
 - Consistent styling across all pages
 - Professional color scheme with green theme
 
-### 6. **State Management** 🔄
+### 6. **State Management**
 - Centralized state using RxJS BehaviorSubject
 - localStorage persistence for data retention
 - SSR-compatible with platform detection
 - Observable-based reactive architecture
 
-### 7. **Additional Features** ⚙️
+### 7. **Additional Features**
 - Toast notification system for user feedback
 - Dark/Light theme support via CSS variables
 - Professional UI with hover effects and animations
@@ -107,7 +107,7 @@ A professional Angular 18 application for tracking and analyzing personal carbon
 
 ---
 
-## 🎯 Assumptions Made
+## Assumptions Made
 
 1. **CO₂ Conversion Factors**: The following conversion factors are used for calculations:
    - Transport: 0.15 kg CO₂ per km
@@ -133,22 +133,7 @@ A professional Angular 18 application for tracking and analyzing personal carbon
 
 ---
 
-## ⏱️ Time Spent on Assignment
+##  Time Spent on Assignment : 10 hours
 
-- **Initial Code Review & Analysis**: 2 hours
-- **Identifying Issues & Creating Fix Plan**: 1.5 hours
-- **Implementing Critical Fixes**:
-  - SSR/localStorage compatibility: 45 minutes
-  - SSR/Chart.js compatibility: 30 minutes
-  - Removing debug console.log statements: 15 minutes
-  - Fixing style budget errors: 20 minutes
-  - Fixing toast message bug: 20 minutes
-  - Fixing type safety issues: 25 minutes
-  - Updating tests: 20 minutes
-  - Total: 2 hours 55 minutes
-- **Verification & Testing**: 1 hour
-- **CO₂ Column Alignment Fix**: 30 minutes
-- **Logo Integration & Asset Management**: 45 minutes
-- **Project Cleanup, Documentation & Repository Setup**: 1 hour 20 minutes
 
-**Total Time: 10 hours**
+

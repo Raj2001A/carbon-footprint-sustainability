@@ -4,13 +4,14 @@ import { RouterModule } from '@angular/router';
 import { EmissionsStateService, EmissionEntry } from '../../core/emissions-state.service';
 import { Subscription } from 'rxjs';
 import { Chart, ChartConfiguration, ChartType, registerables } from 'chart.js';
+import { NavigationComponent } from '../../core/navigation/navigation.component';
 
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-emissions-chart',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NavigationComponent],
   templateUrl: './emissions-chart.component.html',
   styleUrl: './emissions-chart.component.scss'
 })

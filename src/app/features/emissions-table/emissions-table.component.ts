@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EmissionsStateService, EmissionEntry, EmissionCategory, EmissionUnit } from '../../core/emissions-state.service';
+import { NavigationComponent } from '../../core/navigation/navigation.component';
 
 type SortField = 'date' | 'amount';
 type SortDirection = 'asc' | 'desc';
@@ -21,7 +22,7 @@ interface EditFormData {
 @Component({
   selector: 'app-emissions-table',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, NavigationComponent],
   templateUrl: './emissions-table.component.html',
   styleUrl: './emissions-table.component.scss'
 })

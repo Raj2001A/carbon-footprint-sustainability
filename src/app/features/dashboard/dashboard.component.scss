@@ -37,6 +37,12 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
   }
 
   .kpi-label {
@@ -47,16 +53,29 @@
   }
 }
 
-.trend-card .kpi-value.up {
-  color: var(--color-error);
-}
+.trend-card {
+  .kpi-value {
+    font-size: 1.75rem;
+    min-height: 2.5rem;
 
-.trend-card .kpi-value.down {
-  color: var(--color-success);
-}
+    &.up {
+      color: var(--color-error);
+      background: none;
+      -webkit-text-fill-color: unset;
+    }
 
-.trend-card .kpi-value.flat {
-  color: var(--color-text-secondary);
+    &.down {
+      color: var(--color-success);
+      background: none;
+      -webkit-text-fill-color: unset;
+    }
+
+    &.flat {
+      color: var(--color-text-secondary);
+      background: none;
+      -webkit-text-fill-color: unset;
+    }
+  }
 }
 
 .skeleton {
@@ -111,15 +130,34 @@
 }
 
 @media (max-width: 768px) {
-  .page {
-    padding: var(--space-lg);
-  }
-
-  .page-header h1 {
-    font-size: 1.5rem;
-  }
-
   .kpi-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .kpi-card {
+    padding: var(--space-lg);
+
+    h2 {
+      font-size: 0.7rem;
+    }
+
+    .kpi-value {
+      font-size: 1.75rem;
+      min-height: 2.25rem;
+    }
+
+    .kpi-label {
+      font-size: 0.85rem;
+    }
+  }
+
+  .hint {
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+
+    p {
+      font-size: 0.9rem;
+    }
   }
 }
